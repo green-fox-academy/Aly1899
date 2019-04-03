@@ -1,0 +1,75 @@
+* {padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "consolas",sans-serif;
+    background-image: url(assets/topography.png);
+    background-size: auto;
+    background-position: 0 50px;
+}
+
+.content {
+    padding: 0 10%
+}
+
+hr {
+	background-color: #fff;
+	border-top: 2px dashed #8c8b8b;
+}
+
+.topNav {
+    background-color: #333333;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+         
+.topNav img{
+    padding-left: 50px;
+    padding-top: 10px;
+    max-height: 20px;
+}
+.topNav a {
+    float: right;
+    color: #ff0099;
+    text-align: center;
+    /*padding-left: 10px;
+    padding-right: 10px;*/
+    padding:10px;
+    text-decoration: none;
+    font-size: 17;
+}
+
+.topnav a:hover{
+    background-color: #dddd;
+    color: black;
+    position: relative;
+}
+    
+h1 {
+    font-size: 80px;
+    text-align: left;
+    /*padding-left: 20%;*/
+    margin-top: 10%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 40px;
+    color: #ff0099;
+    text-align: left;
+    /*padding-left: 20%;*/
+    margin-top: 0.5%;
+
+}
+
+h3 {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    
+}
+
+p {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
