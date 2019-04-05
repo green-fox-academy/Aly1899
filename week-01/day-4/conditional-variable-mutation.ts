@@ -3,7 +3,7 @@
 let a: number = 24;
 let out: number = 0;
 
-if (a % 2===0) {
+if (a % 2 === 0) {
     out++
 }
 // if a is even increment out by one
@@ -12,12 +12,12 @@ console.log(out);
 
 let b: number = 13;
 let out2: string = '';
-if (b>=10 && b<=20){
-    out2="Sweet"
-}else if (b<10) {
-    out2="Less"  
-}else {
-    out2="More"
+if (b >= 10 && b <= 20) {
+    out2 = "Sweet"
+} else if (b < 10) {
+    out2 = "Less"
+} else {
+    out2 = "More"
 }
 
 // if b is between 10 and 20 set out2 to "Sweet!"
@@ -29,11 +29,11 @@ console.log(out2);
 let c: number = 123;
 let credits: number = 40;
 let isBonus: boolean = true;
-if (!isBonus){
-    if (credits>=50){
-        c-=2
-    }else{
-        c-=1
+if (!isBonus) {
+    if (credits >= 50) {
+        c -= 2
+    } else {
+        c -= 1
     }
 }
 // if credits are at least 50,
@@ -44,20 +44,19 @@ if (!isBonus){
 
 console.log(c);
 
-let d: number =  8;
+let d: number = 8;
 let time: number = 220;
 let out3: string = '';
 
-if (d % 4 ===0){
-    if (time<=200){
-        out3="check"
-    }else{
-        out3="time out"
+if (d % 4 === 0) {
+    if (time <= 200) {
+        out3 = "check";
+    } else {
+        out3 = "time out";
     }
 } else {
-    out3="Run Forest Run"
+    out3 = "Run Forest Run";
 }
-
 // if d is dividable by 4
 // and time is not more than 200
 // set out3 to "check"
