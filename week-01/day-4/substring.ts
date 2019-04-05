@@ -5,7 +5,22 @@
 //  Returns `-1` if the second string is not in the first one
 
 function substr(str: string, keyword: string): number {
-    return str.indexOf(keyword);
+    let isEqual: boolean = false;
+    for (var i = 0; i <= str.length - 1; i++)
+        if (str[i] === keyword[0]) {
+            isEqual = true;
+            for (let k = 1; k <= keyword.length - 1; k++) {
+                if (str[i + k] !== keyword[k]) {
+                    isEqual = false;
+                    break;
+                }
+            }
+            if (isEqual === true) {
+                return i + 1;
+            }
+        }
+    if (isEqual === false) {
+        return -1
+    }
 }
-
-console.log(substr("asdfgh", "df"));
+console.log(substr("this is what I'm searching in", "not"));
