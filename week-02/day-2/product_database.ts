@@ -62,6 +62,6 @@ function cheapest(){
 
 mostExpensive()
 avgPrice()
-belowPice(300)
+belowPice(201)
 canBuy(125)
 cheapest()
