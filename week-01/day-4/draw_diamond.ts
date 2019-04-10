@@ -1,6 +1,6 @@
 'use strict';
 
-var lineCount: number = 36;
+var lineCount: number = 7;
 var line: string = "";
 var space: string = '';
 for (let i = 1; i <= Math.round(lineCount / 2); i++) {
