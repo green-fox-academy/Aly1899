@@ -12,13 +12,7 @@ const ctx = canvas.getContext('2d');
 // Avoid code duplication.
 
 function centerBox(size:number){
-    ctx.beginPath()
-    ctx.moveTo(canvas.width/2-size/2,canvas.height/2-size/2)
-    ctx.lineTo(canvas.width/2+size/2,canvas.height/2-size/2)
-    ctx.lineTo(canvas.width/2+size/2,canvas.height/2+size/2)
-    ctx.lineTo(canvas.width/2-size/2,canvas.height/2+size/2)
-    ctx.lineTo(canvas.width/2-size/2,canvas.height/2-size/2)
-    ctx.stroke()
+    ctx.strokeRect(canvas.width/2-size/2,canvas.height/2-size/2,size,size)
 }
 for (let i =1;i<4;i++){
 centerBox(50*i)
