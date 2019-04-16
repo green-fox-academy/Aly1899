@@ -22,6 +22,4 @@ function squares(x: number, y: number, size: number) {
     squares(x+size/4,y+size,size/2)
     squares(x+size,y+size/2,size/2)
 }
-
-
 squares(0, 0, 300);
