@@ -17,6 +17,6 @@ function readLogs(sFile:string){
     }
     let uniqueIP=[...new Set(ipAddress)]
     console.log(uniqueIP);
-    console.log('The GET/POST request ratio is : '+Math.round((content.length-postCount)/postCount*100) + '%'); 
+    console.log('The GET/POST request ratio is : '+Math.round((content.length-postCount)/postCount) + '%'); 
 }
 readLogs('log.txt')
