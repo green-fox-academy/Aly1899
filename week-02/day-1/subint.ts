@@ -9,4 +9,4 @@ function subint(item:number,list: number[]) {
     }
     return itemIndeses;
 }
-console.log(subint(9,[1, 11, 34, 52, 61]));
+console.log(subint(1,[1, 11, 34, 52, 61]));
