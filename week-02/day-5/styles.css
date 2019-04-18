@@ -1,0 +1,7 @@
+.main-canvas {
+    margin: 20px;
+    border: 1px solid black;
+}
+.main-canvas {
+    -webkit-transform:rotate(90deg);
+}
