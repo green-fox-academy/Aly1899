@@ -15,12 +15,6 @@ class Fleet {
     return this.things;
   }
 
-  print(): void{
-    //   let printedText:string=''
-      for (let i=0;i<this.things.length;i++){
-        console.log(`${i+1}. [${this.getThings()[i].getCompleted() ? 'X':' '}] ${this.getThings()[i].getName()}`)
-      }
-  }
 }
 
 export { Fleet };

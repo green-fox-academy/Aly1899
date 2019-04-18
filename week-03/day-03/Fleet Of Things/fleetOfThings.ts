@@ -1,22 +1,38 @@
 import { Thing } from './thing';
 import { Fleet } from './fleet';
 
-let fleet = new Fleet();
+class FleetOfThings{
+    fleet:Fleet;
 
-const getMilk:Thing=new Thing('Get Milk')
-const removeObstacles:Thing=new Thing('Remove Obstacles')
-const standUp:Thing=new Thing('Stand up')
-const eatLunch:Thing=new Thing('Eat lunch')
+    constructor(fleet:Fleet){
+        this.fleet=fleet;
+    }
 
-fleet.add(getMilk)
-fleet.add(removeObstacles)
-fleet.add(standUp)
-fleet.add(eatLunch)
+    print(){
+        for (let i=0;i<this.fleet.getThings().length;i++){
+            console.log(`${i+1}. [${this.fleet.getThings()[i].getCompleted() ? 'X':' '}] ${this.fleet.getThings()[i].getName()}`)
+          }
+    }
+}
 
-standUp.complete()
-eatLunch.complete()
+        let fleet = new Fleet();
 
-fleet.print()
+        const getMilk:Thing=new Thing('Get Milk')
+        const removeObstacles:Thing=new Thing('Remove Obstacles')
+        const standUp:Thing=new Thing('Stand up')
+        const eatLunch:Thing=new Thing('Eat lunch')
+
+        fleet.add(getMilk)
+        fleet.add(removeObstacles)
+        fleet.add(standUp)
+        fleet.add(eatLunch)
+
+        standUp.complete()
+        eatLunch.complete()
+
+        const fleetOfThings=new FleetOfThings(fleet)
+
+        fleetOfThings.print()
 
 /* Crete a fleet of things to have this output:
 1. [ ] Get milk
