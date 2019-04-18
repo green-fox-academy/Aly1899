@@ -16,8 +16,8 @@ function commonLotteryNumbers(sFile:string){
     for (let i=0;i<numbersArr.length;i++){
         numbersObj[numbersArr[i]]=numbersObj[numbersArr[i]]+1
     }
-    let numberOccurance:string[]=Object.values(numbersObj)
-    let sortNumbersArray=numberOccurance.sort(function(a:any,b:any):any{
+    // let numberOccurance:string[]=Object.values(numbersObj)
+    let sortNumbersArray=Object.values(numbersObj).sort(function(a:any,b:any):any{
         return b-a
     })
     let mostCommon:string[]=[]
@@ -33,6 +33,8 @@ function commonLotteryNumbers(sFile:string){
     for (let i=0;i<mostCommon.length;i++){
         console.log(mostCommon[i]+ ' ('+ numbersObj[mostCommon[i]]+')' )
     }
+// console.log(numbersObj);
+
 }
 
 commonLotteryNumbers('lottery.csv')
