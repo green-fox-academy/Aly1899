@@ -5,7 +5,7 @@ import {Person} from './person'
 export class Mentor extends Person {
   level:string;
 
-  constructor(name:string='Jane Doe',age:number=30,gender:string='femele',level:string='intermediate'){
+  constructor(name:string='Jane Doe',age:number=30,gender:string='female',level:string='intermediate'){
     super(name,age,gender)
     this.level=level
   }
