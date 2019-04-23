@@ -8,7 +8,7 @@ export class Tree extends Plant{
 // waterNeed=18
 
   constructor(name:string){
-    super('Tree',name,0.4,18,0)
+    super('Tree',name,0.4,10,0)
   }
 
 }
