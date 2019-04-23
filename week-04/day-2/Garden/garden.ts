@@ -8,7 +8,7 @@ import {Plant} from './plant'
 export class Garden{
   plants:Plant[]=[];
   
-  addPlant(plant:any){
+  addPlant(plant:Plant){
     this.plants.push(plant)
   }
 
