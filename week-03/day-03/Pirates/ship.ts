@@ -58,7 +58,6 @@ export class Ship {
         }
         while (i<rndDeath)
         this.getNumberOfAlivePirates()      
-        
     }
     
     battle(otherShip: Ship): boolean {
