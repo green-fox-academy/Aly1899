@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+}
+
+.container {
+  width: 1000px;
+  height: 500px;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .item {
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+}
