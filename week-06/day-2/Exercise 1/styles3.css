@@ -1,0 +1,27 @@
+* {
+  margin:0;
+}
+
+.container {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: row-reverse;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+}
+
+.green {
+  background-color: green;
+  flex: 1
+}
+.yellow {
+  background-color:yellow;
+  flex: 2
+}
+.purple {
+  background-color: purple;
+  flex: 1
+}
