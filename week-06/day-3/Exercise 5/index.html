@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: CreateElement</title>
+  </head>
+  <body>
+    <ul class="asteroids">
+      <li id="b325" class="asteroid">The King</li>
+      <li class="asteroid b326">The Conceited Man</li>
+    </ul>
+    <div class="container"></div>
+
+    <script>
+      // Add an item that says 'The Green Fox' to the asteroid list.
+      // Add an item that says 'The Lamplighter' to the asteroid list.
+      // Add a heading saying 'I can add elements to the DOM!' to the .container.
+      // Add an image, any image, to the container.
+      const asteroid=document.querySelector('ul')
+      const theGreenFox=document.createElement('li')
+      const theLamplighter=document.createElement('li')
+      theGreenFox.innerText='The Green Fox'
+      theLamplighter.innerText='The Lamplighter'
+      asteroid.appendChild(theGreenFox)
+      asteroid.appendChild(theLamplighter)
+
+      const header=document.createElement('h1')
+      header.innerText='I can add elements to the DOM!'
+      document.getElementsByClassName('container')[0].appendChild(header)
+
+      const image=document.createElement('img')
+      image.setAttribute('src','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDoSSaNFXkyXwM24A3aBRbP2GK7iA_hLFJJn4PycsOrIemZUmxaw')
+      document.getElementsByClassName('container')[0].appendChild(image)
+
+    </script>
+  </body>
+</html>
