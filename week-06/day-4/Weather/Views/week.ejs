@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/week-data-style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+      <% for (let i=0;i < forecasts[0].weather;i++){ %>
+      <div class="dashboard">
+        <div class="icon">
+          <img src="/images/<%= forecasts[1].weather[1].icon %>.png" alt="">
+        </div>
+        <p><%= forecasts[0].weather[i].temp %>°C</p>
+        <p><%= forecasts[0].weather[i].message %></p>
+      </div>
+      <% } %>
+  </div>
+  <script src="../index.js"></script>
+</body>
+</html>
