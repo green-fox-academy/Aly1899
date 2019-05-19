@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">Cocktails</h1>
+      <ul class="alcohol-list">
+        <% alcoholList.forEach(function(e){ %>
+          <li><a href="http://localhost:3000/?alcohol=<%= e %>"><%= e %></a></li>
+        <% }); %>
+      </ul>
+      <table>
+          <tr>
+            <th>
+              <h1>Name</h1>
+            </th>
+            <th>
+              <h1>Price</h1>
+            </th>
+          </tr>
+
+          <tr>
+            <% cocktails.forEach(function(e) { %>
+              <td class="first-column">
+                <h1><%= e.name %>
+                  <% if(!e.isAlcoholic){ %>
+                    (Non-Alcoholic) 
+                 <% } %> 
+                </h1>
+                <p><%= e.contains %> 
+                </p>
+              </td>
+              <td>
+                <h1><%= e.price %> Ft</h1>
+              </td>
+            </tr>
+          <% }) %>
+        <table>
+    <script src="../index.js"></script>
+  </div>
+  </body>
+</html>
