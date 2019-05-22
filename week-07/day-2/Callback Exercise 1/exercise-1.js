@@ -47,3 +47,16 @@ const removeSecondLetter = (string) =>{
 
 console.log(mapWith2(words, removeSecondLetter));
 // expected result: ['mp','rdc', 'fle']
+
+
+function isPrime(number){
+  let result=true;
+  for (let i=2;i<number/2+1;i++){
+    if (number % i===0){
+      result=false
+    }
+  }
+  return result;
+}
+
+console.log(isPrime(10))
