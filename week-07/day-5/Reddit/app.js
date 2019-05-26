@@ -5,6 +5,7 @@ const mySql=require('mysql');
 const app=express();
 const PORT=3000;
 
+      
 app.use(express.json());
 
 const reddit=mySql.createConnection({
@@ -43,13 +44,11 @@ app.post('/posts',(req,res)=>{
   let title=req.body.title
   let url=req.body.url
   let userID=req.body.userid
-  console.log(userID)
   let qry=`INSERT INTO posts (title,url,user_id) VALUES('${title}','${url}','${userID}');`
   reddit.query(qry,(err,result)=>{
     if (err){
       console.log('Error in INSERT to DB'+err)
     }
-    console.log(result.insertId)
     reddit.query(
       `
       SELECT p.post_id,title,url,create_at,IFNULL(s.score,0) AS score,u.user_name, vote
@@ -73,49 +72,60 @@ app.post('/posts',(req,res)=>{
   })
 })
 
+//UPVOTE
 
 app.put('/posts/:postid/upvote',(req,res)=>{
   let postID=req.params.postid
-  let userID=req.query.userid
-  let voteCheck
+  let userID=req.body.userid
+  let upVoteCheck
   reddit.query(`
-    SELECT COUNT(*) FROM vote
-    WHERE user_id=${userID} AND post_id=${postID};
-  `,(err,voteCheckResult)=>{
-    voteCheckResult
-  })
-  reddit.query(
-    `INSERT INTO vote(user_id,post_id,vote) 
-    VALUES
-    ('${userID}','${postID}','1')`,(err,result)=>{
-      if (err){
-        console.log('Error in PUT UPVOTE INSERT')
+    SELECT COUNT(*) AS count FROM vote
+    WHERE user_id=${userID} AND post_id=${postID} AND vote=1;`,(err,voteCheckResult)=>{
+      if (err) {
+        console.log('Error in UPVOTE CHECK' + err)
       }
-      reddit.query(
-      `
-      SELECT p.post_id,title,url,create_at,score,u.user_name, vote
-      FROM posts p
-      LEFT JOIN users u
-      ON u.user_id=p.user_id
-      LEFT JOIN 
-        (SELECT * FROM vote
-        WHERE user_id=${userID} AND post_id=${postID}) v
-      ON v.user_id=p.user_id AND v.post_id=v.post_id
-      WHERE p.post_id=${postID};`,(err,responseResult)=>{
-        if (err){
-          console.log('Error in POST RESPONSE SELECT');
+  // })
+      console.log('voteCheckResult : ' + voteCheckResult[0].count)
+
+      if (voteCheckResult[0].count===1){
+        reddit.query(`DELETE FROM vote WHERE user_id=${userID} AND post_id=${postID} AND vote=1;`)  
+        res.send(`You've alredy voted tothis post`)
+      }else{
+        reddit.query(
+          `INSERT INTO vote(user_id,post_id,vote) 
+          VALUES
+          ('${userID}','${postID}','1')`,(err,result)=>{
+            if (err){
+              console.log('Error in PUT UPVOTE INSERT')
+            }
+            reddit.query(
+              `
+              SELECT p.post_id,title,url,create_at,IFNULL(s.score,0) AS score,u.user_name, vote
+              FROM posts p
+              LEFT JOIN users u
+              ON u.user_id=p.user_id
+              LEFT JOIN 
+                (SELECT * FROM vote
+                WHERE user_id=${userID}) v
+              ON v.user_id=p.user_id AND v.post_id=p.post_id
+              LEFT JOIN 
+                (SELECT post_id,sum(vote) AS score FROM vote
+                GROUP BY post_id) s
+              ON s.post_id=p.post_id
+              WHERE p.post_id=${postID};`,(err,responseResult)=>{
+                if (err){
+                console.log('Error in POST RESPONSE SELECT');
+              }
+            res.send(responseResult)
+            })
+          })
         }
-      res.send(responseResult)
-      })
     })
   })
 
   app.put('/posts/:postid/downvote',(req,res)=>{
-    
-
-
     let postID=req.params.postid
-    let userID=req.query.userid
+    let userID=req.body.userid
     reddit.query(
       `INSERT INTO vote(user_id,post_id,vote) 
       VALUES
@@ -125,16 +135,20 @@ app.put('/posts/:postid/upvote',(req,res)=>{
         }
         reddit.query(
         `
-        SELECT p.post_id,title,url,create_at,score,u.user_name, vote
+        SELECT p.post_id,title,url,create_at,IFNULL(s.score,0) AS score,u.user_name, vote
         FROM posts p
         LEFT JOIN users u
         ON u.user_id=p.user_id
         LEFT JOIN 
           (SELECT * FROM vote
           WHERE user_id=${userID}) v
-        ON v.user_id=p.user_id AND v.post_id=v.post_id
+        ON v.user_id=p.user_id AND v.post_id=p.post_id
+        LEFT JOIN 
+          (SELECT post_id,sum(vote) AS score FROM vote
+          GROUP BY post_id) s
+        ON s.post_id=p.post_id
         WHERE p.post_id=${postID};`,(err,responseResult)=>{
-          if (err){
+            if (err){
             console.log('Error in POST RESPONSE SELECT');
           }
         res.send(responseResult)
@@ -151,14 +165,18 @@ app.put('/posts/:postid/upvote',(req,res)=>{
       // req.header('')
       reddit.query(
       `
-      SELECT p.post_id,title,url,create_at,score,u.user_name, vote
+      SELECT p.post_id,title,url,create_at,IFNULL(s.score,0) AS score,u.user_name, vote
       FROM posts p
       LEFT JOIN users u
       ON u.user_id=p.user_id
       LEFT JOIN 
         (SELECT * FROM vote
         WHERE user_id=${userID}) v
-      ON v.user_id=p.user_id AND v.post_id=v.post_id
+      ON v.user_id=p.user_id AND v.post_id=p.post_id
+      LEFT JOIN 
+        (SELECT post_id,sum(vote) AS score FROM vote
+        GROUP BY post_id) s
+      ON s.post_id=p.post_id
       WHERE p.post_id=${postID};`,(err,responseResult)=>{
         if (err){
           console.log('Error in DELETE SELECT')
@@ -200,8 +218,8 @@ app.put('/posts/:postid',(req,res)=>{
       ON u.user_id=p.user_id
       LEFT JOIN 
         (SELECT * FROM vote
-        WHERE user_id=${userID} AND post_id=${postID}) v
-      ON v.user_id=p.user_id AND v.post_id=v.post_id
+        WHERE user_id=${userID}) v
+      ON v.user_id=p.user_id AND v.post_id=p.post_id
       WHERE p.post_id=${postID};`,(err,responseResult)=>{
         if (err){
           console.log('Error in POST RESPONSE SELECT');
