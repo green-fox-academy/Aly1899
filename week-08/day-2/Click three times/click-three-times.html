@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Three times</title>
+</head>
+<body>
+<button data-id=0 id="btn">Button</button>
+<p></p>
+<script>
+  let click=0
+  const btn=document.querySelector('#btn')
+
+  btn.addEventListener('click',(e)=>{
+    if(click===2){
+      document.querySelector('p').innerHTML='qwetqw'
+    }
+    click+=1
+  })
+
+</script>
+</body>
+</html>
