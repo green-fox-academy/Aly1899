@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: EventListeners</title>
+  </head>
+  <body>
+    <button>Click me</button>
+
+    <script>
+      const btn=document.querySelector('button')
+      // btn.addEventListener('click',timeStamp(e))
+
+    function oneTimeStamp(node, type, event){
+        node.addEventListener(type, function(e){
+          e.target.removeEventListener(e.type,arguments.callee)
+          return event(e)
+        })
+    }
+
+    oneTimeStamp(btn,'click', function(e){
+        console.log(e)
+        console.log(Date.now())
+    })
+        // this.removeEventListener('click', timeStamp )
+      
+      // Create an event listener which logs the current timestamp to the console once the button is clicked.
+      // When the button is clicked for the second or any other times no event listener should be called.
+      // Try to solve this two different ways.
+      // hint: take a look at the button attributes https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    </script>
+  </body>
+</html>
