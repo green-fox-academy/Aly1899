@@ -2,12 +2,6 @@
 
 const myDiv = document.querySelector('div');
 
-let bkgColor=function (elem){
-  elem.classList.add('new-color')
-  var event= new CustomEvent('left-side-click')
-  elem.dispatchEvent(event)
-}
-
 myDiv.addEventListener('left-side-click', (ev) => {
   ev.target.style.backgroundColor = 'yellow';
 });
@@ -15,3 +9,7 @@ myDiv.addEventListener('left-side-click', (ev) => {
 myDiv.addEventListener('right-side-click', (ev) => {
   ev.target.style.backgroundColor = 'blue';
 });
+
+myDiv.addEventListener('click',(e)=>{
+  e.clientX<=200 ? myDiv.dispatchEvent(new CustomEvent('left-side-click')) : myDiv.dispatchEvent(new CustomEvent('right-side-click'))
+})
