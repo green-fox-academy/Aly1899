@@ -84,9 +84,7 @@ app.put('/posts/:postid/upvote',(req,res)=>{
       if (err) {
         console.log('Error in UPVOTE CHECK' + err)
       }
-  // })
       console.log('voteCheckResult : ' + voteCheckResult[0].count)
-
       if (voteCheckResult[0].count===1){
         reddit.query(`DELETE FROM vote WHERE user_id=${userID} AND post_id=${postID} AND vote=1;`)  
         res.send(`You've alredy voted tothis post`)
@@ -123,9 +121,25 @@ app.put('/posts/:postid/upvote',(req,res)=>{
     })
   })
 
+  //DOWNVOTE
+
   app.put('/posts/:postid/downvote',(req,res)=>{
     let postID=req.params.postid
     let userID=req.body.userid
+    reddit.query(`
+    SELECT COUNT(*) AS count FROM vote
+    WHERE user_id=${userID} AND post_id=${postID} AND vote=-1;`,(err,voteCheckResult)=>{
+      if (err) {
+        console.log('Error in DOWNVOTE CHECK' + err)
+      }
+  // })
+      console.log('voteCheckResult : ' + voteCheckResult[0].count)
+
+      if (voteCheckResult[0].count===1){
+        reddit.query(`DELETE FROM vote WHERE user_id=${userID} AND post_id=${postID} AND vote=-1;`)  
+        res.send(`You've alredy voted tothis post`)
+      }else{   
+  
     reddit.query(
       `INSERT INTO vote(user_id,post_id,vote) 
       VALUES
@@ -154,7 +168,9 @@ app.put('/posts/:postid/upvote',(req,res)=>{
         res.send(responseResult)
         })
       })
+      }
     })
+  })
 
 
     app.delete('/posts/:postid',(req,res)=>{
