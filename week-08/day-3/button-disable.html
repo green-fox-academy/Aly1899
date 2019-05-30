@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Button disable</title>
+</head>
+<body>
+  <form action="">
+    <p>What is your favourite pet?</p>
+    <input type="radio" name="pet" value="Dog">Dog<br>
+    <input type="radio" name="pet" value="Dog">Cat<br>
+    <input type="radio" name="pet" value="Dog">Victor the goldfish<br>
+    <p>Do you want to sign up for cat facts?</p>
+    <input type="radio" name="fact" value="Yes">Yes<br>
+    <input type="radio" name="fact" value="No">No<br>
+    <button type="submit" disabled="true">I love cats</button>
+    <button type="submit" disabled="true">Sign up</button>
+  </form>
+
+<script>
+  const pet=document.querySelectorAll('input[name="pet"]')
+  const fact=document.querySelectorAll('input[name="fact"]')
+  const btn=document.querySelectorAll('button')
+  console.log(pet);
+  
+  pet[0].addEventListener('change',()=>{
+    btn[1].disabled=false
+  })
+  pet[1].addEventListener('change',()=>{
+    btn[1].disabled=false
+  })
+  pet[2].addEventListener('change',()=>{
+    console.log(fact)
+    if (fact[1].checked===true){
+      btn[1].disabled=false
+    }else{
+      btn[1].disabled=true
+    }
+  })
+  fact[0].addEventListener('change',()=>{
+    if (pet[2].checked===true){
+      btn[0].disabled=false
+      btn[1].disabled=true
+    }else{
+      btn[0].disabled=false
+      btn[1].disabled=false   
+    }
+  })
+  fact[1].addEventListener('change',()=>{
+    if (pet[2].checked===true){
+      btn[1].disabled=false
+      btn[0].disabled=true
+    }else{
+      btn[0].disabled=true
+      btn[1].disabled=true
+    }
+  })
+  for (i=0;i<btn.length;i++){
+  btn[i].addEventListener('click',()=>{
+    if(pet[2].checked===true && fact[1].checked===true){
+      alert(`Sigh, we still added you to the cat facts list`)
+    }else{
+      alert(`Thank you, you've successfully signed up for cat facts`)
+    }
+  })
+  }
+  
+
+
+  if (pet[0].checked===true || pet[1].checked===true){
+    btn[1].disabled=false
+  }else if (pet[2].checked===true){
+    btn[1].disabled=true
+  }
+  
+</script>
+</body>
+</html>
