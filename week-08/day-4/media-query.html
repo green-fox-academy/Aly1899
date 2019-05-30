@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Media query</title>
+  <style>
+  @media screen and (max-width: 500px){
+    body{
+      display: block;
+    }
+    div{
+      width: 30%;
+      height: 200px;
+    }
+
+    .first{
+   background-color: green; 
+  }
+  .second{
+   background-color: yellow; 
+  }
+  .third{
+   background-color: purple; 
+  }
+  }
+  /* @media screen and (min-width: 500px){
+  body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: row;
+  }
+  div{
+    height: 200px;
+  }
+  .first{
+    flex:1;
+   background-color: green; 
+  }
+  .second{
+    flex:2;
+   background-color: yellow; 
+  }
+  .third{
+    flex:1;
+   background-color: purple; 
+  }
+  }
+   */
+  </style>
+</head>
+<body>
+  <div class="first"></div>
+  <div class="second"></div>
+  <div class="third"></div>
+</body>
+</html>
