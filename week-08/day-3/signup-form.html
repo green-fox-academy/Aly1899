@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign up</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+    body{
+      height: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: gainsboro
+    }
+    .container{
+      width: 60%;
+      height: 800px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+    }
+    .main-container{
+      width: 80%;
+      height: 80%;
+      padding:4%;
+    }
+    h1{
+      font-size: 3rem;
+      font-weight: 100;
+    }
+    .form-container{
+      width: 100%;
+      height:80%;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+    
+    form{
+      /* flex:2.5 */
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 2%;
+    }
+    form>input{
+      /* width: 70%; */
+      font-size: 2rem;
+      padding:3%;
+      margin:3% 0;
+      border: none;
+      border-bottom:1px solid grey;
+      /* border-bottom-color: grey; */
+    }
+
+    input:focus{
+      outline:none;
+      border-bottom:3px solid green;
+    }
+
+    input[type='submit']{
+      margin-top:10%;
+      width: 300px;
+      background-color: green;
+      color: #fff;
+      border-radius: 10px;
+    }
+
+    .image{
+      /* flex:1; */
+      margin:0 2%;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      /* background-color: blueviolet */
+    }
+
+    .image {
+      height: 100px;
+      width:100px;
+      background-color: lightgray;
+      font-size: 2rem;
+      border-radius: 100%;
+      text-align: center;
+      box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);;
+    }
+
+    .image div p{
+
+    }
+
+    .login-options{
+      flex:2;
+    }
+
+    .login-options div{
+      width: 100%;
+      font-size: 1.5rem;
+      padding:5%;
+      margin:5% 0 10% 10%;
+      color: #fff;
+      border-radius: 10px;
+    }
+
+    .login-options div p{
+      text-align: center;
+    }
+    .fb{
+      background-color: blue
+    }
+
+    .tw{
+      background-color: lightskyblue
+    }
+
+    .go{
+      background-color:red
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main-container">
+      <div class="header">
+        <h1>Sign up</h1>
+      </div>
+      <div class="form-container">
+        <form action="https://newsletter-ws.herokuapp.com/register" method="GET">
+          <input type="text" name="name" placeholder="Username">
+          <input type="email" name="email" placeholder="Email">
+          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="passwordConfirmation" placeholder="Retype password">
+          <input type="submit" value="SIGN ME UP">
+        </form>
+        <div class="image">
+          OR
+        </div>
+        <div class="login-options">
+          <div class="fb"><p>Log in with facebook</p></div>
+          <div class="tw"><p>Log in with Twitter</p></div>
+          <div class="go"><p>Log in with Google+</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
