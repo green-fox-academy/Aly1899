@@ -42,7 +42,7 @@ function getAllBooksFullData(){
   console.log(document.getElementById('category').value)
   if (document.getElementById('category').value){
     console.log('i am here')
-    category=`?category=${document.getElementById('category').value}`
+    category=`?category=${ document.getElementById('category').value}`
   }
   const urlAllBooksFull='http://localhost:3000/allbooksfull'+category
   
