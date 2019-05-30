@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    body{
+      background-color: rgb(221, 219, 219);
+    }
+
+    .container{
+      margin: 150px auto;
+      /* display: block; */
+      width: 700px;
+      height: 700px;
+      background-color: #fff
+    }
+
+
+    .form-container{
+      width: 550px;
+      margin: 50px auto ;
+    }
+
+    p{
+      font-size: 3rem;
+      color: darkgray;
+      padding: 40px;
+    }
+    form label{
+      font-size: 1rem;
+      padding: 5px 40px;
+    }
+
+    input[type="text"],
+    input[type="password"]{
+      width: 400px;
+      margin: 5px 40px;
+      padding: 20px;
+      font-size: 2rem;
+      border-radius: 2px;
+      border:1px solid lightgray;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus{
+      outline: 3px solid rgb(21, 153, 43);
+    }
+
+    .password{
+      position: relative; 
+    }
+    i{
+      font-size: 1.5rem;
+      position: absolute;
+      right:100px;
+      top:30px;
+      color: lightgray;
+    }
+
+    a{
+      float:right;
+      padding: 5px;
+      margin-right: 60px;
+    }
+
+    input[type="submit"]{
+      margin: 40px 40px;
+      width: 250px;
+      background-color: black;
+      color:gainsboro;
+      padding:20px 50px;
+      font-size: 1.4rem;
+      border-radius:30px
+    }
+
+    input[type="submit"]:hover{
+      cursor: pointer;
+    }
+
+
+/* 
+    input[type=".password"]{
+      border: none;
+    } 
+      width: 400px;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid lightgrey;
+    } */
+
+    
+
+  </style>
+
+  <title>Login</title>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <p>ACCOUNT LOGIN</p>
+      <form>
+        <label for="">USERNAME</label>
+        <input type="text" autofocus name="username">
+        <label for="">PASSWORD</label>
+        <div class="password">
+          <input type="password" name="password" id="password">
+          <i class="fa fa-eye"></i>
+        </div>
+        <a href="">Forgot password?</a>
+        <input type="submit" value="Login">
+      </form>
+    </div> 
+  </div>
+
+<script>
+  const eye=document.querySelector('i')
+  const psw=document.querySelector('#password')
+  eye.addEventListener('click',()=>{
+    if(psw.type==='password'){
+      psw.type='text'
+      eye.className='fa fa-eye-slash'
+      eye.style.color='green'
+    }else{
+      psw.type='password'
+      eye.style.color='lightgray'
+      eye.className='fa fa-eye'
+    }
+  })
+</script>
+</body>
+</html>
